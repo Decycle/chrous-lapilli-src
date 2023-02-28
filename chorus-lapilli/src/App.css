@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+@import url('https://fonts.googleapis.com/css?family=Itim');
+
+.App {
+  background-color: rgb(200, 167, 140);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-family: 'Gloria Hallelujah';
+  text-align: center;
+  color: rgb(65, 61, 57);
+  margin: 0;
+  font-size: 2rem;
+}
+
+.result-window {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background-color: white;
+}
+
+.board {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 300px;
+  height: 300px;
+  background-color: rgb(255, 231, 208);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 5px;
+
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.menu {
+  font-family: 'Itim';
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.2rem;
+}
+
+.menu button {
+  font-size: 1.2rem;
+  background-color: rgb(255, 231, 208);
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.menu button:hover {
+  cursor: pointer;
+  background-color: rgb(255, 200, 152);
+}
+
+.menu button:active {
+  background-color: rgb(255, 133, 133);
+}
+
+.result {
+  font-family: 'Itim';
+  font-size: 2.4rem;
+  color: rgb(65, 61, 57);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  top: 14%;
+}
+
+.cell {
+  box-sizing: border-box;
+  font-size: 2rem;
+  background-color: rgb(218, 181, 158);
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.cell.can-place:hover {
+  cursor: pointer;
+  border: 2px solid rgb(255, 255, 255);
+}
+
+.cell.can-select {
+  border: 3px solid rgb(128, 117, 107);
+}
+
+.cell.can-select.cell-center {
+  background-color: rgb(255, 133, 133);
+  border: 3px solid rgb(255, 100, 100);
+}
+
+.cell.can-select:hover {
+  cursor: pointer;
+  border: 2px solid rgb(255, 255, 255);
+}
+
+.cell.can-move {
+  border: 3px solid rgb(118, 118, 118);
+}
+
+.cell.can-move:hover {
+  cursor: pointer;
+  border: 2px solid rgb(255, 255, 255);
+}
+
+.cell-content {
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  padding-top: 10px;
+}
+
+.cell-content path {
+  stroke: rgb(100, 100, 100);
+  stroke-width: 10;
+  fill: rgb(248, 238, 220);
+  fill-opacity: 0%;
+
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+
+  animation: entry 0.7s ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes entry {
+  0% {
+    stroke-dashoffset: 2000;
+    fill-opacity: 0%;
+  }
+
+  60% {
+    stroke-dashoffset: 0;
+    fill-opacity: 0%;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    fill-opacity: 100%;
+  }
+}
+
+@keyframes wiggleCross {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(15deg);
+  }
+  75% {
+    transform: rotate(-15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes wiggleCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(45deg);
+  }
+  75% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
