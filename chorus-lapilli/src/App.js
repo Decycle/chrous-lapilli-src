@@ -228,8 +228,11 @@ const App = () => {
     setResult('')
   }
 
-  const [showRuleWindow, setShowRuleWindow] =
-    useState(false)
+  const hasSeen = localStorage.getItem('hasSeen')
+
+  const [showRuleWindow, setShowRuleWindow] = useState(
+    !hasSeen
+  )
 
   return (
     <div className='App'>
@@ -297,7 +300,10 @@ const App = () => {
       </div>
       <RuleWindow
         show={showRuleWindow}
-        close={() => setShowRuleWindow(false)}
+        close={() => {
+          setShowRuleWindow(false)
+          localStorage.setItem('hasSeen', true)
+        }}
       />
     </div>
   )
