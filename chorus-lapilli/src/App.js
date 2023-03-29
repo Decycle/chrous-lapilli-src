@@ -228,6 +228,9 @@ const App = () => {
     setResult('')
   }
 
+  const [showRuleWindow, setShowRuleWindow] =
+    useState(false)
+
   return (
     <div className='App'>
       <h1 className='title'>Chorus Lapilli</h1>
@@ -262,6 +265,11 @@ const App = () => {
         ))}
       </div>
       <div className='menu'>
+        <button
+          className='rule'
+          onClick={() => setShowRuleWindow(true)}>
+          Rules
+        </button>
         <button className='reset' onClick={resetGame}>
           Reset Game
         </button>
@@ -283,6 +291,56 @@ const App = () => {
         </button>
       </div>
       <div className='result'>{result}</div>
+      <div className='author-display'>
+        By <a href='https://github.com/decycle'>Decycle</a>{' '}
+        - 2023
+      </div>
+      <RuleWindow
+        show={showRuleWindow}
+        close={() => setShowRuleWindow(false)}
+      />
+    </div>
+  )
+}
+
+const RuleWindow = ({ show, close }) => {
+  return (
+    <div
+      className='rule-window'
+      style={{
+        display: show ? 'block' : 'none',
+      }}
+      onClick={close}>
+      <div
+        className='rule-window-content'
+        onClick={(e) => e.stopPropagation()}>
+        <div className='rule-window-header'>
+          <b>Rules</b>
+        </div>
+        <main className='rule-window-body'>
+          <p>
+            Chorus lapilli is an engaging game 🎲 similar to
+            tic-tac-toe. You play on a 3x3 board, aiming to
+            get three in a row.
+          </p>
+          <p>
+            But there's a twist! After placing your first
+            three pieces, you can only move them to a nearby
+            empty spot. If you have a piece in the center,
+            you must either win 🏆 (by connecting three in a
+            row) or move it away on your turn. Enjoy 😊
+          </p>
+          <p>
+            ps. Also the AI is borderline unbeatable😈, so
+            good luck 🤞
+          </p>
+        </main>
+        <div className='rule-window-footer'>
+          <button className='close' onClick={close}>
+            Close
+          </button>
+        </div>
+      </div>
     </div>
   )
 }
