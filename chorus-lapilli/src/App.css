@@ -45,8 +45,8 @@
 .menu {
   font-family: 'Itim';
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 0.5rem;
+  left: 0.5rem;
   font-size: 1.2rem;
 }
 
@@ -201,6 +201,13 @@
   border: 2px solid rgb(255, 255, 255);
   border-radius: 5px;
   padding: 20px 20px 10px 20px;
+  width: 80vw;
+}
+
+@media (min-width: 768px) {
+  .rule-window-content {
+    width: 40rem;
+  }
 }
 
 .rule-window-header {
@@ -251,6 +258,6 @@
   padding: 0;
   text-align: center;
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  bottom: 1rem;
+  right: 1rem;
 }
